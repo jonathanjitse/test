@@ -19,8 +19,8 @@ public class Main {
     public static final Logger log = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) throws SQLException {
-        Connection con = crearConexion();
-        inicializarBasedeDatos(con);
+        Connection con = createConn();
+        initDBTables(con);
         MuServerBuilder.httpServer()
                 .withHttpPort(8080)
                 .addHandler(Method.POST, "/booking/create", new BookingHandler())
@@ -28,7 +28,7 @@ public class Main {
                 .start();
     }
 
-    private static Connection crearConexion() throws SQLException {
+    private static Connection createConn() throws SQLException {
 
         System.out.println("Creating DB connection");
 
@@ -38,9 +38,9 @@ public class Main {
 
         return DbConnectionHelper.createConnection();
 
-    } // crearConexion
+    }
 
-    private static void inicializarBasedeDatos(Connection conn) throws SQLException {
+    private static void initDBTables(Connection conn) throws SQLException {
 
         System.out.println("Creationg Table to use");
         try {
