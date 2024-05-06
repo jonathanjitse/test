@@ -32,7 +32,6 @@ public class Main {
 
         System.out.println("Creating DB connection");
 
-        // Configuramos y usamos la clase DbConnectionHelper
         DbConnectionHelper.setUsername("sa");
         DbConnectionHelper.setPassword("");
         DbConnectionHelper.setConnectionUrl("jdbc:h2:mem:h2Demo");
@@ -45,7 +44,6 @@ public class Main {
 
         System.out.println("Creationg Table to use");
         try {
-            // Ejecutamos el script para crear las tablas.
             RunScript.execute(conn, new FileReader("/Users/j.aguilar.rodriguez/Documents/onefinancialWS/test/src/main/resources/createTable.sql"));
         } catch (FileNotFoundException e) {
             System.out.println("there is a problem creationg tables");
